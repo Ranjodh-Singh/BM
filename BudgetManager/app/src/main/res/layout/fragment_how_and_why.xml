@@ -1,0 +1,52 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="edu.rs.budgetmanager.HowAndWhyFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <EditText
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/amount"
+        android:layout_gravity="center_horizontal|top" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:text="@string/amountLabel"
+        android:id="@+id/amountLabel"
+        android:layout_gravity="left|top"
+        android:typeface="monospace" />
+
+    <TextView
+        android:layout_width="67dp"
+        android:layout_height="34dp"
+        android:text="@string/label"
+        android:id="@+id/label"
+        android:layout_gravity="left|center_vertical"
+        android:typeface="monospace" />
+
+    <Spinner
+        android:layout_width="204dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/labelSpinner"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        android:id="@+id/description"
+        android:layout_gravity="left|bottom" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/descriptionText"
+        android:layout_gravity="center_horizontal|bottom" />
+</FrameLayout>

@@ -1,0 +1,126 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="edu.rs.budgetmanager.SureFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <!--<TextView android:layout_width="match_parent" android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />-->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="63dp"
+        android:text="@string/submit"
+        android:id="@+id/Submit"
+        android:layout_gravity="center_horizontal|bottom"
+        android:focusableInTouchMode="false"
+        android:clickable="true" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="427dp"
+        android:layout_gravity="center"
+        android:id="@+id/relativeId">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/amountLabel"
+            android:id="@+id/reviewAmountId"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/amountValueId"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/reviewAmountId"
+            android:layout_toEndOf="@+id/reviewAmountId" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/label"
+            android:id="@+id/reviewLabelId"
+            android:layout_marginTop="63dp"
+            android:layout_below="@+id/reviewAmountId"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/reviewLabelValueId"
+            android:layout_alignBottom="@+id/reviewLabelId"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/description"
+            android:id="@+id/reviewDescId"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/reviewDescValue"
+            android:layout_alignTop="@+id/reviewDescId"
+            android:layout_alignLeft="@+id/reviewLabelValueId"
+            android:layout_alignStart="@+id/reviewLabelValueId" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/time"
+            android:id="@+id/reviewTimeId"
+            android:layout_below="@+id/reviewDescId"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="63dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/reviewTimeValue"
+            android:layout_alignBottom="@+id/reviewTimeId"
+            android:layout_alignLeft="@+id/reviewDescValue"
+            android:layout_alignStart="@+id/reviewDescValue" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/Date"
+            android:id="@+id/textView5"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/reviewDateValue"
+            android:layout_alignBottom="@+id/textView5"
+            android:layout_alignLeft="@+id/reviewTimeValue"
+            android:layout_alignStart="@+id/reviewTimeValue" />
+    </RelativeLayout>
+
+</FrameLayout>
