@@ -93,7 +93,7 @@ public class BudgetManagerDBHelper extends SQLiteOpenHelper {
         List<String> labels = new ArrayList<String>();
 
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + DBMetaData.LabelEntry.TABLE_NAME;
+        String selectQuery = "SELECT  labelId FROM " + DBMetaData.RecordsEntry.TABLE_NAME;
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -101,7 +101,7 @@ public class BudgetManagerDBHelper extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                labels.add(cursor.getString(1));
+                labels.add(cursor.getString(0));
             } while (cursor.moveToNext());
         }
 

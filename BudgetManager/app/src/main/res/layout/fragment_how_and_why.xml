@@ -29,12 +29,6 @@
         android:layout_gravity="left|center_vertical"
         android:typeface="monospace" />
 
-    <Spinner
-        android:layout_width="204dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/labelSpinner"
-        android:layout_gravity="center" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,4 +43,11 @@
         android:ems="10"
         android:id="@+id/descriptionText"
         android:layout_gravity="center_horizontal|bottom" />
+
+    <MultiAutoCompleteTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="label your purchase."
+        android:id="@+id/autoCompleteTextView"
+        android:layout_gravity="center" />
 </FrameLayout>

@@ -69,6 +69,42 @@ public class WhenFragment extends Fragment {
         View inflate = inflater.inflate(R.layout.fragment_when, container, false);
         time = (EditText)inflate.findViewById(R.id.timeId);
         date = (EditText)inflate.findViewById(R.id.dateId);
+        time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerFragment mTimePickerFragment = new TimePickerFragment();
+                mTimePickerFragment.setmEditText(time);
+                mTimePickerFragment.show(getChildFragmentManager(),"timePicker");
+            }
+        });
+        time.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    TimePickerFragment mTimePickerFragment = new TimePickerFragment();
+                    mTimePickerFragment.setmEditText(time);
+                    mTimePickerFragment.show(getChildFragmentManager(),"timePicker");
+                }
+            }
+        });
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerFragment mDatePickerFragment = new DatePickerFragment();
+                mDatePickerFragment.setmEditText(date);
+                mDatePickerFragment.show(getChildFragmentManager(),"datePicker");
+            }
+        });
+        date.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+                    DatePickerFragment mDatePickerFragment = new DatePickerFragment();
+                    mDatePickerFragment.setmEditText(date);
+                    mDatePickerFragment.show(getChildFragmentManager(), "datePicker");
+                }
+            }
+        });
         return inflate;
     }
 

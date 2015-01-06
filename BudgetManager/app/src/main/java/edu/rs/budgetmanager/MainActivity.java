@@ -71,7 +71,8 @@ public class MainActivity extends ActionBarActivity implements Callback{
 
                    HowAndWhyFragment howAndWhyFragment = (HowAndWhyFragment)mSectionsPagerAdapter.fragMap.get(0);
                     getData().put(Constants.AMOUNT, howAndWhyFragment.amount.getText().toString());
-                   getData().put(Constants.DESC, howAndWhyFragment.description.getText().toString());
+                    getData().put(Constants.LABEL, howAndWhyFragment.getmAutoCompleteTextView().getText().toString());
+                    getData().put(Constants.DESC, howAndWhyFragment.description.getText().toString());
                     WhenFragment whenFragment = (WhenFragment)mSectionsPagerAdapter.fragMap.get(1);
                     getData().put(Constants.TIME, whenFragment.time.getText().toString());
                     getData().put(Constants.DATE, whenFragment.date.getText().toString());

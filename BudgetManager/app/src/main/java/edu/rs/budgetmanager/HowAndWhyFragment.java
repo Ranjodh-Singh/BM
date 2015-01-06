@@ -5,16 +5,25 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.MultiAutoCompleteTextView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import edu.rs.budgetmanager.db.BudgetManagerDBHelper;
 import edu.rs.budgetmanager.db.DBMetaData;
@@ -40,7 +49,16 @@ public class HowAndWhyFragment extends Fragment implements AdapterView.OnItemSel
     private String mParam2;
     EditText amount = null;
     EditText description = null;
-    Spinner spinner = null;
+
+    public AutoCompleteTextView getmAutoCompleteTextView() {
+        return mAutoCompleteTextView;
+    }
+
+    public void setmAutoCompleteTextView(MultiAutoCompleteTextView mAutoCompleteTextView) {
+        this.mAutoCompleteTextView = mAutoCompleteTextView;
+    }
+
+    private MultiAutoCompleteTextView mAutoCompleteTextView;
 
 
     /**
@@ -81,33 +99,59 @@ public class HowAndWhyFragment extends Fragment implements AdapterView.OnItemSel
         View view = inflater.inflate(R.layout.fragment_how_and_why, container, false);
         amount = (EditText)view.findViewById(R.id.amount);
         description = (EditText)view.findViewById(R.id.descriptionText);
-        spinner = (Spinner)view.findViewById(R.id.labelSpinner);
-
-        spinner.setOnItemSelectedListener(this);
-        loadSpinnerData();
+        mAutoCompleteTextView = (MultiAutoCompleteTextView)view.findViewById(R.id.autoCompleteTextView);
+        //loadSpinnerData();
+        loadLabels();
+        mAutoCompleteTextView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
         return view ;
     }
 
     /**
      * loading the Spinner data from the database and setting the adapter.
      */
-    private void loadSpinnerData() {
+    private void loadLabels() {
         // database handler
         BudgetManagerDBHelper db = new BudgetManagerDBHelper(this.getActivity().getApplicationContext());
 
-        // Spinner Drop down elements
-        List<String> labels = db.getAllLabels();
+        //  Drop down elements
+        List<String> labels =  db.getAllLabels();
 
+
+
+        // removing null explicitly for a bug if works then get the not null values from the db.
+       labels.removeAll(Collections.singleton(null));
+
+        // remove duplicates.
+        Set<String> labelSet = new HashSet<>(labels);
+
+        // if the labels contains ,(commas) then you have to separate them and add as separate items in list.
+        Iterator mIterator = labelSet.iterator();
+        while (mIterator.hasNext()) {
+
+            String item = (String)mIterator.next();
+            String tokens[]=null;
+            if(item.contains(",")){
+                mIterator.remove();
+                tokens = item.split(",");
+            }
+            if(tokens != null) {
+                for (String str : tokens) {
+                    labelSet.add(str);
+                }
+            }
+
+        }
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item
-                ,labels);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1
+                ,new ArrayList<>(labelSet));
 
         // Drop down layout style - list view with radio button
-        dataAdapter
-                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+       // dataAdapter
+         //       .setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 
         // attaching data adapter to spinner
-        spinner.setAdapter(dataAdapter);
+        //spinner.setAdapter(dataAdapter);
+        mAutoCompleteTextView.setAdapter(dataAdapter);
     }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

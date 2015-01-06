@@ -125,16 +125,24 @@ public class SureFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            callback = (Callback) activity;
+    public void setMenuVisibility(final boolean menuVisible) {
+        super.setMenuVisibility(menuVisible);
+        if(menuVisible) {
             amount.setText(callback.getData().get(Constants.AMOUNT));
             label.setText(callback.getData().get(Constants.LABEL));
             desc.setText(callback.getData().get(Constants.DESC));
             time.setText(callback.getData().get(Constants.TIME));
             date.setText(callback.getData().get(Constants.DATE));
-            Log.d(this.getTag(),"data collected is : "+callback.getData().size());
+            Log.d(this.getTag(), "data collected is : " + callback.getData().size());
+        }
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            callback = (Callback) activity;
+
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnFragmentInteractionListener");
